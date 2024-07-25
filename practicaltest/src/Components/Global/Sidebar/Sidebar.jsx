@@ -1,14 +1,15 @@
 import React, { useContext, useState } from "react";
-import OverView from "../../assets/SvgIcon/Overview.svg?react";
-import Management from "../../assets/SvgIcon/Management.svg?react";
-import ToggleMenu from "../../assets/SvgIcon/ToggleMenu.svg?react";
-import Documents from "../../assets/SvgIcon/Documents.svg?react";
-import Brokers from "../../assets/SvgIcon/Brokers.svg?react";
-import Confidentials from "../../assets/SvgIcon/Confidentials.svg?react";
-import DownArrow from "../../assets/SvgIcon/DownArrow.svg?react";
-import ComapnyBranch from "../../assets/SvgIcon/CompanyBranch.svg?react";
-import AboutCompany from "../../assets/SvgIcon/AboutCompany.svg?react";
-import { SidebarContext } from "../../context/SidebarContext";
+import OverView from "../../../assets/SvgIcon/Overview.svg?react";
+import Management from "../../../assets/SvgIcon/Management.svg?react";
+import ToggleMenu from "../../../assets/SvgIcon/ToggleMenu.svg?react";
+import Documents from "../../../assets/SvgIcon/Documents.svg?react";
+import Brokers from "../../../assets/SvgIcon/Brokers.svg?react";
+import Confidentials from "../../../assets/SvgIcon/Confidentials.svg?react";
+import DownArrow from "../../../assets/SvgIcon/DownArrow.svg?react";
+import ComapnyBranch from "../../../assets/SvgIcon/CompanyBranch.svg?react";
+import AboutCompany from "../../../assets/SvgIcon/AboutCompany.svg?react";
+import { SidebarContext } from "../../../context/SidebarContext";
+import { useNavigate } from "react-router-dom";
 
 function Sidebar() {
 	const [menu, togglemenu] = useState({
@@ -18,6 +19,7 @@ function Sidebar() {
 		aboutCompany: false,
 	});
 	const { toggle, toggleSidebar } = useContext(SidebarContext);
+	const navigate = useNavigate();
 
 	return (
 		<>
@@ -32,7 +34,10 @@ function Sidebar() {
 						</button>
 					</article>
 					<article className=' pt-8 mb-8 px-3 flex flex-col justify-center  gap-4 w-[260px] relative'>
-						<div className='flex gap-3  cursor-pointer'>
+						<div
+							className='flex gap-3  cursor-pointer'
+							onClick={() => navigate("/")}
+						>
 							<OverView />
 							<span className='font-medium text-base '>
 								Overview
@@ -41,12 +46,12 @@ function Sidebar() {
 
 						<div
 							className='flex justify-between'
-							onClick={() =>
+							onClick={() => {
 								togglemenu({
 									...menu,
 									management: !menu.management,
-								})
-							}
+								});
+							}}
 						>
 							<div className='flex gap-3  cursor-pointer'>
 								<Management />
@@ -56,17 +61,69 @@ function Sidebar() {
 							</div>
 
 							<DownArrow
-								className={`mt-2 ${
+								className={`mt-2 cursor-pointer ${
 									menu.management ? "rotate-180" : ""
 								}`}
 							/>
 						</div>
 						{menu.management && (
-							<ul className='flex flex-col gap-2 ml-3 border-l-[1px] border-[#C9C9C9] pl-6 font-medium'>
-								<li>Projects</li>
-								<li>Sponsors</li>
-								<li>Employees</li>
-								<li>Partners</li>
+							<ul className='flex flex-col ml-3 border-l-[1px] border-[#C9C9C9] pl-4 font-medium'>
+								<li
+									onClick={() =>
+										navigate("/management/projects")
+									}
+									className={`cursor-pointer px-4 py-1 rounded-xl ${
+										window.location.pathname.includes(
+											"/management/projects"
+										)
+											? "bg-[#F4F5F8]"
+											: "bg-white"
+									}`}
+								>
+									Projects
+								</li>
+								<li
+									onClick={() =>
+										navigate("/management/sponsers")
+									}
+									className={`cursor-pointer px-4 py-1 rounded-xl ${
+										window.location.pathname.includes(
+											"/management/sponsers"
+										)
+											? "bg-[#F4F5F8]"
+											: "bg-white"
+									}`}
+								>
+									Sponsors
+								</li>
+								<li
+									onClick={() =>
+										navigate("/management/employees")
+									}
+									className={`cursor-pointer px-4 py-1 rounded-xl ${
+										window.location.pathname.includes(
+											"/management/employees"
+										)
+											? "bg-[#F4F5F8]"
+											: "bg-white"
+									}`}
+								>
+									Employees
+								</li>
+								<li
+									onClick={() =>
+										navigate("/management/partners")
+									}
+									className={`cursor-pointer px-4 py-1 rounded-xl ${
+										window.location.pathname.includes(
+											"/management/partners"
+										)
+											? "bg-[#F4F5F8]"
+											: "bg-white"
+									}`}
+								>
+									Partners
+								</li>
 							</ul>
 						)}
 						<div
@@ -86,7 +143,7 @@ function Sidebar() {
 							</div>
 
 							<DownArrow
-								className={`mt-2 ${
+								className={`mt-2 cursor-pointer ${
 									menu.documents ? "rotate-180" : ""
 								}`}
 							/>
@@ -131,7 +188,7 @@ function Sidebar() {
 							</div>
 
 							<DownArrow
-								className={`mt-2 ${
+								className={`mt-2 cursor-pointer ${
 									menu.companyBranch ? "rotate-180" : ""
 								}`}
 							/>
@@ -165,7 +222,7 @@ function Sidebar() {
 							</div>
 
 							<DownArrow
-								className={`mt-2 ${
+								className={`mt-2 cursor-pointer ${
 									menu.aboutCompany ? "rotate-180" : ""
 								}`}
 							/>
