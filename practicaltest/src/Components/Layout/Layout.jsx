@@ -1,20 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import Sidebar from "../Global/Sidebar/Sidebar";
 import Header from "../Global/Header/Header";
 import { Outlet } from "react-router-dom";
-import { SidebarProvider } from "../../context/SidebarContext";
+import { SidebarContext, SidebarProvider } from "../../context/SidebarContext";
 
 function Layout() {
+	const { toggle, toggleSidebar } = useContext(SidebarContext);
 	return (
-		<SidebarProvider>
-			<div className='grid grid-cols-[300px_1fr]'>
+		<>
+			<div
+				className={`grid ${
+					toggle ? "grid-cols-[300px_1fr]" : "grid-cols-1"
+				}`}
+			>
 				<Sidebar />
-				<div>
+				<div className='flex flex-col'>
 					<Header />
 					<Outlet />
 				</div>
 			</div>
-		</SidebarProvider>
+		</>
 	);
 }
 

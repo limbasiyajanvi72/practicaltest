@@ -11,9 +11,7 @@ import ImportArrow from "../../../assets/SvgIcon/ImportArrow.svg?react";
 function Header() {
 	const { toggle, toggleSidebar } = useContext(SidebarContext);
 	return (
-		<nav
-			className={`flex flex-col gap-4 p-5 ${!toggle ? "w-[100vw]" : ""}`}
-		>
+		<nav className={`flex flex-col gap-4 p-5 `}>
 			<section className='flex justify-between '>
 				<article className='flex gap-5 items-center'>
 					{!toggle && (

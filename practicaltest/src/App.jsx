@@ -14,20 +14,31 @@ import Partners from "./Components/Management/Partners";
 
 function App() {
 	return (
-		<BrowserRouter>
-			<Routes>
-				<Route element={<Layout />}>
-					<Route path='/' element={<Overview />} />
-					<Route path='/management/projects' element={<Projects />} />
-					<Route path='/management/sponsers' element={<Sponsers />} />
-					<Route
-						path='/management/employees'
-						element={<Employees />}
-					/>
-					<Route path='/management/partners' element={<Partners />} />
-				</Route>
-			</Routes>
-		</BrowserRouter>
+		<SidebarProvider>
+			<BrowserRouter>
+				<Routes>
+					<Route element={<Layout />}>
+						<Route path='/' element={<Overview />} />
+						<Route
+							path='/management/projects'
+							element={<Projects />}
+						/>
+						<Route
+							path='/management/sponsers'
+							element={<Sponsers />}
+						/>
+						<Route
+							path='/management/employees'
+							element={<Employees />}
+						/>
+						<Route
+							path='/management/partners'
+							element={<Partners />}
+						/>
+					</Route>
+				</Routes>
+			</BrowserRouter>
+		</SidebarProvider>
 	);
 }
 
