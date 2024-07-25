@@ -5,6 +5,8 @@ import ArrowLeft from "../../assets/SvgIcon/ArrowLeft.svg?react";
 import Bell from "../../assets/SvgIcon/Bell.svg?react";
 import ProfilePhoto from "../../assets/Images/Profile_photo.png";
 import MapPoint from "../../assets/SvgIcon/MapPoint.svg?react";
+import ExportArrow from "../../assets/SvgIcon/ExportArrow.svg?react";
+import ImportArrow from "../../assets/SvgIcon/ImportArrow.svg?react";
 
 function Header() {
 	const { toggle, toggleSidebar } = useContext(SidebarContext);
@@ -21,7 +23,7 @@ function Header() {
 					)}
 					<button className='flex gap-2 items-center justify-center w-[86px] h-[37px] border-[1px] border-[#262626] rounded-xl text-sm'>
 						<ArrowLeft />
-						Back
+						<span className='font-medium'>Back</span>
 					</button>
 				</article>
 				<article className='flex gap-5 items-center'>
@@ -41,11 +43,15 @@ function Header() {
 						</span>
 					</div>
 				</article>
-				<article>
-					<button className='h-[48px] w-[94px] rounded-xl '>
+				<article className='flex gap-3'>
+					<button className='h-[48px] w-[94px] border-[1px] border-[#262626] rounded-xl flex justify-center items-center gap-1 '>
+						<ExportArrow />
 						Export
 					</button>
-					<button>Import</button>
+					<button className='h-[48px] w-[94px] bg-[#5046E5] rounded-xl flex justify-center items-center gap-1 txet-white'>
+						<ImportArrow />
+						<span className='text-white'>Import</span>
+					</button>
 				</article>
 			</section>
 		</nav>

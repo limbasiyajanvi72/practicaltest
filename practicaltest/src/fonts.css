@@ -6,12 +6,12 @@
 
 @font-face {
    font-family: 'SF Pro Display';
-   src: url('../public/Fonts/SFPRODISPLAYMEDIUM.OTF') format('truetype');
+   src: url('../public/Fonts/FontsFree-Net-SFProDisplay-Semibold.ttf') format('truetype');
    font-weight: 500;
 }
 
 @font-face {
    font-family: 'SF Pro Display';
-   src: url('../public/Fonts/SFPRODISPLAYREGULAR.OTF') format('truetype');
+   src: url('../public/Fonts/FontsFree-Net-SFProDisplay-light.ttf') format('truetype');
    font-weight: 400;
 }
