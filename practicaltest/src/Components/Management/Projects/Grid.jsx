@@ -16,8 +16,16 @@ import plan2 from "../../../assets/Images/plan2.png";
 import plan3 from "../../../assets/Images/plan3.png";
 
 function Grid() {
-	const [plan, setPlan] = useState({ floor: 1, block: 1001 });
+	const [plan, setPlan] = useState({ floor: "1", block: "1001" });
 	const { toggle } = useContext(SidebarContext);
+
+	const floorSeclect = (e) => {
+		if (e.target.value < 1 || e.target.value > 36) {
+			alert("Invalid Input");
+		} else {
+			setPlan({ ...plan, floor: e.target.value });
+		}
+	};
 
 	return (
 		<section className=''>
@@ -92,9 +100,7 @@ function Grid() {
 						type='number'
 						placeholder='enter floor 1 to 36'
 						className='bg-[#fafafa] border border-[#0000000D] rounded-md focus:outline-0 px-2'
-						onChange={(e) =>
-							setPlan({ ...plan, floor: e.target.value })
-						}
+						onChange={(e) => floorSeclect(e)}
 					/>
 				</div>
 
@@ -103,11 +109,11 @@ function Grid() {
 						{Array.from({ length: 10 }, (_, index) => (
 							<div
 								key={index}
-								className={`w-[131px] xl:w-[141px]  h-[74px] rounded-xl border-[1px] border-[#0000000D] relative flex  items-center  justify-center bg-[#fafafa] cursor-pointer ${
+								className={`w-[131px] xl:w-[141px]  h-[74px] rounded-xl border-[1px] border-[#0000000D] relative flex  items-center  justify-center  cursor-pointer ${
 									plan.block ===
 									`${plan.floor * 100 + index + 1}`
 										? "bg-[#e9e8f7]"
-										: ""
+										: "bg-[#fafafa]"
 								}`}
 								onClick={() =>
 									setPlan({
@@ -118,7 +124,14 @@ function Grid() {
 									})
 								}
 							>
-								<span className='text-[22px] font-medium text-[#262626] leading-[26.25px]'>
+								<span
+									className={`text-[22px] font-medium text-[#262626] leading-[26.25px] ${
+										plan.block ===
+										`${plan.floor * 100 + index + 1}`
+											? "text-[#5046E5]"
+											: ""
+									}`}
+								>
 									A-{plan.floor * 100 + index + 1}
 								</span>
 								<span className='absolute bottom-2 right-2'>
@@ -138,8 +151,10 @@ function Grid() {
 							<span className='text-[24px] font-bold text-[#000000]'>
 								A-{plan.block}
 							</span>
+
 							<span
 								className={`text-[20px] font-medium ${
+									plan.block &&
 									["3", "4", "5"].includes(
 										plan.block.slice(-1)
 									)
@@ -147,7 +162,8 @@ function Grid() {
 										: "text-[#20BC59]"
 								}`}
 							>
-								{["3", "4", "5"].includes(plan.block.slice(-1))
+								{plan.block &&
+								["3", "4", "5"].includes(plan.block.slice(-1))
 									? "Not Available"
 									: "Available"}
 							</span>
