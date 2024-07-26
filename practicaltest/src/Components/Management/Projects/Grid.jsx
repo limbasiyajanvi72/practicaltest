@@ -1,14 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import VilleIcon from "../../../assets/SvgIcon/VilleIcon.svg?react";
 import ThreeSquare from "../../../assets/SvgIcon/ThreeSquare.svg?react";
 import Triangle from "../../../assets/SvgIcon/Triangle.svg?react";
 import RedTriangle from "../../../assets/SvgIcon/RedTriangle.svg?react";
+import { SidebarContext } from "../../../context/SidebarContext";
+import Plan from "../../../assets/Images/plan.png";
+import TopView from "../../../assets/SvgIcon/TopView.svg?react";
+import Sofa from "../../../assets/SvgIcon/Sofa.svg?react";
+import Rooms from "../../../assets/SvgIcon/Rooms.svg?react";
+import Layout from "../../../assets/SvgIcon/Layout.svg?react";
+import BluePrint from "../../../assets/SvgIcon/BluePrint.svg?react";
+import FaceToward from "../../../assets/SvgIcon/FaceToward.svg?react";
+import plan1 from "../../../assets/Images/plan1.png";
+import plan2 from "../../../assets/Images/plan2.png";
+import plan3 from "../../../assets/Images/plan3.png";
 
 function Grid() {
+	const { toggle, toggleSidebar } = useContext(SidebarContext);
 	return (
-		<section className='p-5'>
+		<section className=''>
 			<article className='flex gap-4'>
-				<button className='flex gap-1 justify-center items-center  border-[1px] border-[#e5e5e5] rounded-xl w-[113px] h-[48px]'>
+				<button className='flex gap-3 justify-center items-center  border-[1px] border-[#e5e5e5] rounded-xl w-[113px] h-[48px]'>
 					<VilleIcon />
 					<span className='font-bold text-[#00000080]'>
 						Ami Ville
@@ -19,9 +31,13 @@ function Grid() {
 					<h1 className='font-bold text-[#00000080]'>Wing A</h1>
 				</button>
 			</article>
-			<section className=' flex gap-6  py-5 w-[100%]'>
-				<article className='flex flex-col w-[50%]'>
-					<div className=' flex justify-between items-center h-[74px] border-t-[1px] border-l-[1px] border-r-[1px] border-[#0000000D] rounded-t-xl px-5  bg-[#fafafa]'>
+			<article
+				className={`grid grid-cols-[1fr_441px] xl:grid-cols-[1fr_636px]  gap-6 py-5 ${
+					toggle ? "flex" : ""
+				} `}
+			>
+				<main className='flex flex-col bg-[#fafafa] border-[#0000000D] rounded-xl border-t-[1px] border-b-[0.5px] border-r-[0.5px] border-l-[0.5px] h-min'>
+					<div className=' flex justify-between items-center h-[74px]   px-5   '>
 						<span className='text-[22px] font-medium text-[#1B1B1B]'>
 							Floors
 						</span>
@@ -30,11 +46,11 @@ function Grid() {
 						</span>
 					</div>
 
-					<div className=' flex flex-wrap bg-[#fafafa]'>
+					<div className=' flex flex-wrap '>
 						{Array.from({ length: 36 }, (_, index) => (
 							<div
 								key={index + 1}
-								className='flex-grow min-w-[108px] max-w-[20%] h-[95px] border-[0.5px] border-[#0000000D] flex flex-col gap-1 justify-center items-center'
+								className='flex-grow min-w-[108px]  h-[95px] border-[0.5px] border-[#0000000D] flex flex-col gap-1 justify-center items-center'
 							>
 								<span className='text-[22px] text-[#1B1B1B] font-medium'>
 									{index + 1}
@@ -45,17 +61,23 @@ function Grid() {
 							</div>
 						))}
 					</div>
-				</article>
-				<article className='flex flex-col w-[50%]'>
-					<main className='flex gap-4 flex-wrap '>
+				</main>
+
+				<main className='flex flex-col gap-6'>
+					<div className='flex flex-wrap gap-6 '>
 						{Array.from({ length: 10 }, (_, index) => (
 							<div
 								key={index}
-								className='min-w-[141px] max-w-[30%] h-[74px] rounded-xl border-[1px] border-[#0000000D] relative'
+								className='w-[131px] xl:w-[141px]  h-[74px] rounded-xl border-[1px] border-[#0000000D] relative flex  items-center  justify-center bg-[#fafafa]'
 							>
-								{index + 1}
+								{" "}
+								<span className='text-[22px] font-medium text-[#262626] leading-[26.25px]'>
+									A-120{index + 1}
+								</span>
 								<span className='absolute bottom-2 right-2'>
-									{index === 5 || index === 4 ? (
+									{index === 2 ||
+									index === 3 ||
+									index === 4 ? (
 										<RedTriangle />
 									) : (
 										<Triangle />
@@ -63,16 +85,116 @@ function Grid() {
 								</span>
 							</div>
 						))}
-					</main>
-					<main className=''>
-						<div className='flex '>
-							<span>A-1206</span>
-							<span>Available</span>
+					</div>
+					<div className='flex flex-col gap-6 border-[#0000000D] rounded-xl border-[1px]  p-6'>
+						<div className='flex justify-between'>
+							<span className='text-[24px] font-bold text-[#000000]'>
+								A-1206
+							</span>
+							<span className='text-[#20BC59] text-[20px] font-medium'>
+								Available
+							</span>
 						</div>
-						<div></div>
-					</main>
-				</article>
-			</section>
+						<div className='flex flex-col xl:flex-row gap-6'>
+							<div className='flex flex-col gap-6'>
+								<img src={Plan} alt='plan' />
+								<div className='flex gap-6'>
+									<img
+										src={plan1}
+										alt=''
+										className='rounded-md'
+									/>
+									<img
+										src={plan2}
+										alt=''
+										className='rounded-md'
+									/>
+									<img
+										src={plan3}
+										alt=''
+										className='rounded-md'
+									/>
+								</div>
+								<span className='text-[#5046E5] text-[20px] font-medium'>
+									View Details
+								</span>
+							</div>
+							<div className='flex  xl:flex-col gap-6'>
+								<div className='flex flex-col gap-6'>
+									<div className='flex flex-col gap-2'>
+										<div className='flex gap-2 items-center'>
+											<TopView />
+											<span className='text-custom-gray  txet-sm'>
+												TopView
+											</span>
+										</div>
+										<span className='font-medium text-[#262626]'>
+											3 BHK Type 6
+										</span>
+									</div>
+									<div className='flex flex-col gap-2'>
+										<div className='flex gap-2 items-center'>
+											<Sofa />
+											<span className='text-custom-gray  txet-sm'>
+												Sofa
+											</span>
+										</div>
+										<span className='font-medium text-[#262626]'>
+											3
+										</span>
+									</div>
+									<div className='flex flex-col gap-2'>
+										<div className='flex gap-2 items-center'>
+											<Rooms />
+											<span className='text-custom-gray  txet-sm'>
+												Rooms
+											</span>
+										</div>
+										<span className='font-medium text-[#262626]'>
+											4
+										</span>
+									</div>
+								</div>
+								<div className='flex flex-col gap-6'>
+									<div className='flex flex-col gap-2'>
+										<div className='flex gap-2 items-center'>
+											<Layout />
+											<span className='text-custom-gray  txet-sm'>
+												Layout
+											</span>
+										</div>
+										<span className='font-medium text-[#262626]'>
+											Same in all
+										</span>
+									</div>
+									<div className='flex flex-col gap-2'>
+										<div className='flex gap-2 items-center'>
+											<BluePrint />
+											<span className='text-custom-gray  txet-sm'>
+												BluePrint Cost
+											</span>
+										</div>
+										<span className='font-medium text-[#262626]'>
+											rs. 19,000
+										</span>
+									</div>
+									<div className='flex flex-col gap-2'>
+										<div className='flex gap-2 items-center'>
+											<FaceToward />
+											<span className='text-custom-gray  txet-sm'>
+												Face Towards
+											</span>
+										</div>
+										<span className='font-medium text-[#262626]'>
+											West
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</main>
+			</article>
 		</section>
 	);
 }
