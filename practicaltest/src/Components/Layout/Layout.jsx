@@ -9,13 +9,18 @@ function Layout() {
 
 	return (
 		<>
-			<div
-				className={`hidden md:grid ${
-					toggle ? "grid-cols-[300px_1fr]" : "grid-cols-1"
-				}`}
-			>
-				<Sidebar />
-				<div className='flex flex-col'>
+			<div className='hidden md:flex'>
+				{toggle && (
+					<div className='fixed inset-y-0 left-0  z-[99] overflow-y-auto'>
+						<Sidebar />
+					</div>
+				)}
+
+				<div
+					className={`${
+						toggle ? "ml-[300px]" : ""
+					} flex flex-col flex-grow `}
+				>
 					<Header />
 					<Outlet />
 				</div>

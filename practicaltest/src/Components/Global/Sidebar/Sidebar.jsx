@@ -25,7 +25,7 @@ function Sidebar() {
 		<>
 			{toggle && (
 				<>
-					<nav className='w-[300px] min-h-[100vh] h-auto p-5  text-[#262626] z-50 bg-[#FFF] '>
+					<nav className='w-[300px] min-h-[100vh] h-auto p-5  text-[#262626] z-50 bg-[#FFF] overflow-x-hidden'>
 						<article className='flex justify-between items-center'>
 							<h1 className='uppercase font-bold text-[32px] text-[#262626]'>
 								amilek
