@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import VilleIcon from "../../../assets/SvgIcon/VilleIcon.svg?react";
 import ThreeSquare from "../../../assets/SvgIcon/ThreeSquare.svg?react";
 import Triangle from "../../../assets/SvgIcon/Triangle.svg?react";
@@ -16,7 +16,9 @@ import plan2 from "../../../assets/Images/plan2.png";
 import plan3 from "../../../assets/Images/plan3.png";
 
 function Grid() {
-	const { toggle, toggleSidebar } = useContext(SidebarContext);
+	const [plan, setPlan] = useState({ floor: 1, block: 1001 });
+	const { toggle } = useContext(SidebarContext);
+
 	return (
 		<section className=''>
 			<article className='flex gap-4'>
@@ -32,11 +34,11 @@ function Grid() {
 				</button>
 			</article>
 			<article
-				className={`grid grid-cols-[1fr_441px] xl:grid-cols-[1fr_636px]  gap-6 py-5 ${
+				className={`flex flex-col lg:grid lg:grid-cols-[1fr_441px] xl:grid-cols-[1fr_636px]  gap-6 py-5 ${
 					toggle ? "flex" : ""
 				} `}
 			>
-				<main className='flex flex-col bg-[#fafafa] border-[#0000000D] rounded-xl border-t-[1px] border-b-[0.5px] border-r-[0.5px] border-l-[0.5px] h-min'>
+				<main className='hidden lg:flex flex-col bg-[#fafafa] border-[#0000000D] rounded-xl border-t-[1px] border-b-[0.5px] border-r-[0.5px] border-l-[0.5px] h-min'>
 					<div className=' flex justify-between items-center h-[74px]   px-5   '>
 						<span className='text-[22px] font-medium text-[#1B1B1B]'>
 							Floors
@@ -50,12 +52,31 @@ function Grid() {
 						{Array.from({ length: 36 }, (_, index) => (
 							<div
 								key={index + 1}
-								className='flex-grow min-w-[108px]  h-[95px] border-[0.5px] border-[#0000000D] flex flex-col gap-1 justify-center items-center'
+								className={`flex-grow min-w-[108px]  h-[95px] border-[0.5px] border-[#0000000D] flex flex-col gap-1 justify-center items-center cursor-pointer ${
+									index + 1 === plan.floor
+										? " bg-[#e9e8f7]"
+										: ""
+								}`}
+								onClick={() =>
+									setPlan({ ...plan, floor: index + 1 })
+								}
 							>
-								<span className='text-[22px] text-[#1B1B1B] font-medium'>
+								<span
+									className={`text-[22px] text-[#1B1B1B] font-medium ${
+										index + 1 === plan.floor
+											? "text-[#5046E5]"
+											: ""
+									}`}
+								>
 									{index + 1}
 								</span>
-								<span className='text-custom-gray font-medium'>
+								<span
+									className={`text-custom-gray font-medium ${
+										index + 1 === plan.floor
+											? "text-[#5046E5]"
+											: ""
+									}`}
+								>
 									5 units
 								</span>
 							</div>
@@ -63,16 +84,42 @@ function Grid() {
 					</div>
 				</main>
 
+				<div className=' lg:hidden flex gap-3'>
+					<h2 className='font-medium text-[24px] text-[#262626] '>
+						Enter Floor
+					</h2>
+					<input
+						type='number'
+						placeholder='enter floor 1 to 36'
+						className='bg-[#fafafa] border border-[#0000000D] rounded-md focus:outline-0 px-2'
+						onChange={(e) =>
+							setPlan({ ...plan, floor: e.target.value })
+						}
+					/>
+				</div>
+
 				<main className='flex flex-col gap-6'>
 					<div className='flex flex-wrap gap-6 '>
 						{Array.from({ length: 10 }, (_, index) => (
 							<div
 								key={index}
-								className='w-[131px] xl:w-[141px]  h-[74px] rounded-xl border-[1px] border-[#0000000D] relative flex  items-center  justify-center bg-[#fafafa]'
+								className={`w-[131px] xl:w-[141px]  h-[74px] rounded-xl border-[1px] border-[#0000000D] relative flex  items-center  justify-center bg-[#fafafa] cursor-pointer ${
+									plan.block ===
+									`${plan.floor * 100 + index + 1}`
+										? "bg-[#e9e8f7]"
+										: ""
+								}`}
+								onClick={() =>
+									setPlan({
+										...plan,
+										block: `${
+											plan.floor * 100 + index + 1
+										}`,
+									})
+								}
 							>
-								{" "}
 								<span className='text-[22px] font-medium text-[#262626] leading-[26.25px]'>
-									A-120{index + 1}
+									A-{plan.floor * 100 + index + 1}
 								</span>
 								<span className='absolute bottom-2 right-2'>
 									{index === 2 ||
@@ -89,13 +136,23 @@ function Grid() {
 					<div className='flex flex-col gap-6 border-[#0000000D] rounded-xl border-[1px]  p-6'>
 						<div className='flex justify-between'>
 							<span className='text-[24px] font-bold text-[#000000]'>
-								A-1206
+								A-{plan.block}
 							</span>
-							<span className='text-[#20BC59] text-[20px] font-medium'>
-								Available
+							<span
+								className={`text-[20px] font-medium ${
+									["3", "4", "5"].includes(
+										plan.block.slice(-1)
+									)
+										? "text-[#FF0000]"
+										: "text-[#20BC59]"
+								}`}
+							>
+								{["3", "4", "5"].includes(plan.block.slice(-1))
+									? "Not Available"
+									: "Available"}
 							</span>
 						</div>
-						<div className='flex flex-col xl:flex-row gap-6'>
+						<div className='flex flex-col xl:flex-row gap-6 bg-[#fafafa]'>
 							<div className='flex flex-col gap-6'>
 								<img src={Plan} alt='plan' />
 								<div className='flex gap-6'>

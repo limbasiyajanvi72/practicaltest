@@ -13,3 +13,13 @@
     font-family: 'SF Pro Display', sans-serif;
     font-weight: 500;
  }
+
+ input::-webkit-outer-spin-button,
+ input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+ }
+
+ input[type=number] {
+    -moz-appearance: textfield;
+ }
