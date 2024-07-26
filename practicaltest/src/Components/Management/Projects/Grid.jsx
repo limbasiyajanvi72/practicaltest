@@ -168,8 +168,10 @@ function Grid() {
 									: "Available"}
 							</span>
 						</div>
-						<div className='flex flex-col xl:flex-row gap-6 bg-[#fafafa]'>
-							<div className='flex flex-col gap-6'>
+						<div
+							className={`flex flex-col  xl:flex-row gap-6 bg-[#fafafa] `}
+						>
+							<div className='flex flex-col  gap-6'>
 								<img src={Plan} alt='plan' />
 								<div className='flex gap-6'>
 									<img
