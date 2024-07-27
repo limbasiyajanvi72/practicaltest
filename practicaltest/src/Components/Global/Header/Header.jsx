@@ -41,7 +41,7 @@ function Header() {
 						</span>
 					</div>
 				</article>
-				<article className='flex gap-3'>
+				<article className='flex flex-col sm:flex-row	 gap-3'>
 					<button className='h-[48px] w-[94px] border-[1px] border-[#262626] rounded-xl flex justify-center items-center gap-2 '>
 						<ExportArrow />
 						<span className='font-medium text-[#262626]'>
