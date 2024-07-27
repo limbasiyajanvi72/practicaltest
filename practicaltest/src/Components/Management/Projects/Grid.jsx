@@ -47,7 +47,7 @@ function Grid() {
 				} `}
 			>
 				<main className='hidden lg:flex flex-col bg-[#fafafa] border-[#0000000D] rounded-xl border-t-[1px] border-b-[0.5px] border-r-[0.5px] border-l-[0.5px] h-min' onClick={(e)=>e.stopPropagation()}>
-					<div className=' flex justify-between items-center h-[74px]   px-5   '>
+					<div className=' flex justify-between items-center h-[74px]   px-5    '>
 						<span className='text-[22px] font-medium text-[#1B1B1B]'>
 							Floors
 						</span>
@@ -60,7 +60,7 @@ function Grid() {
 						{Array.from({ length: 36 }, (_, index) => (
 							<div
 								key={index + 1}
-								className={`flex-grow min-w-[108px]  h-[95px] border-[0.5px] border-[#0000000D] flex flex-col gap-1 justify-center items-center cursor-pointer ${
+								className={`flex-grow min-w-[108px]   h-[95px] border-[0.5px] border-[#0000000D] flex flex-col gap-1 justify-center items-center cursor-pointer   ${
 									index + 1 === plan.floor
 										? " bg-[#e9e8f7]"
 										: ""
@@ -110,7 +110,7 @@ function Grid() {
 						{Array.from({ length: 10 }, (_, index) => (
 							<div
 								key={index}
-								className={`w-[131px] xl:w-[141px]  h-[74px] rounded-xl border-[1px] border-[#0000000D] relative flex  items-center  justify-center  cursor-pointer ${
+								className={`w-[131px] xl:w-[141px]  h-[74px] rounded-xl border-[1px] border-[#0000000D] relative flex  items-center  justify-center  cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ${
 									plan.block ===
 									`${plan.floor * 100 + index + 1}`
 										? "bg-[#e9e8f7]"
