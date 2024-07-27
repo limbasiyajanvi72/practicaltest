@@ -46,7 +46,7 @@ function Grid() {
 					toggle ? "flex" : ""
 				} `}
 			>
-				<main className='hidden lg:flex flex-col bg-[#fafafa] border-[#0000000D] rounded-xl border-t-[1px] border-b-[0.5px] border-r-[0.5px] border-l-[0.5px] h-min'>
+				<main className='hidden lg:flex flex-col bg-[#fafafa] border-[#0000000D] rounded-xl border-t-[1px] border-b-[0.5px] border-r-[0.5px] border-l-[0.5px] h-min' onClick={(e)=>e.stopPropagation()}>
 					<div className=' flex justify-between items-center h-[74px]   px-5   '>
 						<span className='text-[22px] font-medium text-[#1B1B1B]'>
 							Floors
@@ -92,7 +92,7 @@ function Grid() {
 					</div>
 				</main>
 
-				<div className=' lg:hidden flex gap-3'>
+				<div className=' lg:hidden flex gap-3'onClick={(e)=>e.stopPropagation()}>
 					<h2 className='font-medium text-[24px] text-[#262626] '>
 						Enter Floor
 					</h2>
@@ -101,6 +101,7 @@ function Grid() {
 						placeholder='enter floor 1 to 36'
 						className='bg-[#fafafa] border border-[#0000000D] rounded-md focus:outline-0 px-2'
 						onChange={(e) => floorSeclect(e)}
+
 					/>
 				</div>
 
@@ -115,13 +116,13 @@ function Grid() {
 										? "bg-[#e9e8f7]"
 										: "bg-[#fafafa]"
 								}`}
-								onClick={() =>
-									setPlan({
-										...plan,
-										block: `${
-											plan.floor * 100 + index + 1
-										}`,
-									})
+								onClick={(e) =>{setPlan({
+									...plan,
+									block: `${
+										plan.floor * 100 + index + 1
+									}`,
+								});e.stopPropagation()}
+									
 								}
 							>
 								<span
