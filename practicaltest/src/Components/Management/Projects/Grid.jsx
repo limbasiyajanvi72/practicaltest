@@ -104,8 +104,8 @@ function Grid() {
 					/>
 				</div>
 
-				<main className='flex flex-col gap-6'>
-					<div className='flex flex-wrap gap-6 '>
+				<main className='flex flex-col  gap-6 '>
+					<div className='flex justify-center lg:justify-start flex-wrap gap-6 '>
 						{Array.from({ length: 10 }, (_, index) => (
 							<div
 								key={index}
@@ -146,8 +146,8 @@ function Grid() {
 							</div>
 						))}
 					</div>
-					<div className='flex flex-col gap-6 border-[#0000000D] rounded-xl border-[1px]  p-6'>
-						<div className='flex justify-between'>
+					<div className='flex flex-col gap-6 border-[#0000000D] rounded-xl border-[1px]  p-6 bg-[#fafafa]'>
+						<div className='flex justify-between '>
 							<span className='text-[24px] font-bold text-[#000000]'>
 								A-{plan.block}
 							</span>
@@ -169,11 +169,11 @@ function Grid() {
 							</span>
 						</div>
 						<div
-							className={`flex flex-col  xl:flex-row gap-6 bg-[#fafafa] `}
+							className={`flex flex-col items-center  xl:flex-row gap-6  `}
 						>
-							<div className='flex flex-col  gap-6'>
-								<img src={Plan} alt='plan' />
-								<div className='flex gap-6'>
+							<div className='flex flex-col items-center lg:items-start  gap-6'>
+								<img src={Plan} alt='plan' className="w-[326px] sm:w-[536px] xl:w-[326px]" />
+								<div className='flex justify-center lg:justify-start gap-3 md:gap-6'>
 									<img
 										src={plan1}
 										alt=''

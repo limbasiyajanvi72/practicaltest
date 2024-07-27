@@ -37,7 +37,7 @@ function Sidebar() {
 						<article className=' pt-8 mb-8 px-3 flex flex-col justify-center  gap-4 w-[260px] relative'>
 							<div
 								className='flex gap-3  cursor-pointer'
-								onClick={() => navigate("/")}
+								onClick={() => {navigate("/");toggleSidebar()}}
 							>
 								<OverView />
 								<span className='font-medium text-base '>
@@ -70,8 +70,8 @@ function Sidebar() {
 							{menu.management && (
 								<ul className='flex flex-col ml-3 border-l-[1px] border-[#C9C9C9] pl-4 font-medium'>
 									<li
-										onClick={() =>
-											navigate("/management/projects")
+										onClick={() =>{navigate("/management/projects");toggleSidebar()}
+											
 										}
 										className={`cursor-pointer px-4 py-1 rounded-xl ${
 											window.location.pathname.includes(
@@ -84,8 +84,8 @@ function Sidebar() {
 										Projects
 									</li>
 									<li
-										onClick={() =>
-											navigate("/management/sponsers")
+										onClick={() =>{navigate("/management/sponsers");toggleSidebar()}
+											
 										}
 										className={`cursor-pointer px-4 py-1 rounded-xl ${
 											window.location.pathname.includes(
@@ -98,8 +98,8 @@ function Sidebar() {
 										Sponsors
 									</li>
 									<li
-										onClick={() =>
-											navigate("/management/employees")
+										onClick={() =>{navigate("/management/employees");toggleSidebar()}
+											
 										}
 										className={`cursor-pointer px-4 py-1 rounded-xl ${
 											window.location.pathname.includes(
@@ -112,8 +112,8 @@ function Sidebar() {
 										Employees
 									</li>
 									<li
-										onClick={() =>
-											navigate("/management/partners")
+										onClick={() =>{navigate("/management/partners");toggleSidebar()}
+											
 										}
 										className={`cursor-pointer px-4 py-1 rounded-xl ${
 											window.location.pathname.includes(
