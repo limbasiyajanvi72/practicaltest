@@ -46,7 +46,10 @@ function Grid() {
 					toggle ? "flex" : ""
 				} `}
 			>
-				<main className='hidden lg:flex flex-col bg-[#fafafa] border-[#0000000D] rounded-xl border-t-[1px] border-b-[0.5px] border-r-[0.5px] border-l-[0.5px] h-min' onClick={(e)=>e.stopPropagation()}>
+				<main
+					className='hidden lg:flex flex-col bg-[#fafafa] border-[#0000000D] rounded-xl border-t-[1px] border-b-[0.5px] border-r-[0.5px] border-l-[0.5px] h-min'
+					onClick={(e) => e.stopPropagation()}
+				>
 					<div className=' flex justify-between items-center h-[74px]   px-5    '>
 						<span className='text-[22px] font-medium text-[#1B1B1B]'>
 							Floors
@@ -92,7 +95,10 @@ function Grid() {
 					</div>
 				</main>
 
-				<div className=' lg:hidden flex gap-3'onClick={(e)=>e.stopPropagation()}>
+				<div
+					className=' lg:hidden flex gap-3'
+					onClick={(e) => e.stopPropagation()}
+				>
 					<h2 className='font-medium text-[24px] text-[#262626] '>
 						Enter Floor
 					</h2>
@@ -101,7 +107,6 @@ function Grid() {
 						placeholder='enter floor 1 to 36'
 						className='bg-[#fafafa] border border-[#0000000D] rounded-md focus:outline-0 px-2'
 						onChange={(e) => floorSeclect(e)}
-
 					/>
 				</div>
 
@@ -116,14 +121,15 @@ function Grid() {
 										? "bg-[#e9e8f7]"
 										: "bg-[#fafafa]"
 								}`}
-								onClick={(e) =>{setPlan({
-									...plan,
-									block: `${
-										plan.floor * 100 + index + 1
-									}`,
-								});e.stopPropagation()}
-									
-								}
+								onClick={(e) => {
+									setPlan({
+										...plan,
+										block: `${
+											plan.floor * 100 + index + 1
+										}`,
+									});
+									e.stopPropagation();
+								}}
 							>
 								<span
 									className={`text-[22px] font-medium text-[#262626] leading-[26.25px] ${
@@ -173,7 +179,11 @@ function Grid() {
 							className={`flex flex-col items-center  xl:flex-row gap-6  `}
 						>
 							<div className='flex flex-col items-center lg:items-start  gap-6'>
-								<img src={Plan} alt='plan' className="w-[326px] sm:w-[536px] xl:w-[326px]" />
+								<img
+									src={Plan}
+									alt='plan'
+									className='w-[326px] sm:w-[536px] xl:w-[326px]'
+								/>
 								<div className='flex justify-center lg:justify-start gap-3 md:gap-6'>
 									<img
 										src={plan1}
